@@ -1,0 +1,34 @@
+- name: INSTALLING JENKINS
+  hosts: localhost
+  become: yes # it will switc to root user
+  tasks:
+
+  - name: COPYING JENKINS.REPO
+    ansible.builtin.copy:
+      src: /home/centos/terraform-jenkins-01/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+
+
+  - name: Import a key from a url
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+  
+  - name: INSTALLING THE DEPENDENCIES OF JENKINS
+    ansible.builtin.yum:
+      name:
+      - fontconfig 
+      - java-17-openjdk
+      state: present
+    
+  - name: Install the JENKINS
+    ansible.builtin.yum:
+      name: jenkins
+      state: latest
+
+  - name: ENABLING JENKINS
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+      state: restarted
+      enabled: true
