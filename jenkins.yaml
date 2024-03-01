@@ -27,8 +27,16 @@
       name: jenkins
       state: latest
 
-  - name: ENABLING JENKINS
+
+  - name: DEAMON-RELOADING SERVICE
+    become: yes
     ansible.builtin.systemd_service:
-      daemon_reload: true
       state: restarted
-      enabled: true
+      daemon_reload: true
+      name: jenkins
+
+  - name: ENABLING JENKINS SRVICE
+    become: yes
+    ansible.builtin.service:
+     name: jenkins
+     enabled: yes
