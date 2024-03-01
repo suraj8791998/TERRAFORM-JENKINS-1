@@ -5,9 +5,9 @@
 
   - name: COPYING JENKINS.REPO
     ansible.builtin.copy:
-      src: /home/centos/terraform-jenkins-01/jenkins.repo
+      src: /tmp/TERRAFORM-JENKINS-1/jenkins.repo
       dest: /etc/yum.repos.d/jenkins.repo
-
+      remote_src: yes
 
   - name: Import a key from a url
     ansible.builtin.rpm_key:

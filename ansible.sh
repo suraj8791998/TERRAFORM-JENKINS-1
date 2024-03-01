@@ -12,16 +12,16 @@ else
     echo "INSTALLATION ANSIBLE CORE IS SUCCESS"
 fi 
 
-# cd /tmp
-# git clone https://github.com/suraj8791998/JENKINS-INSTALLATION.git
+cd /tmp
+git clone https://github.com/suraj8791998/TERRAFORM-JENKINS-1.git
 
-# if [ $? -ne 0 ];
-# then
-#     echo "GIT CLONING IS FAILURE"
-# else
-#     echo "GIT CLONING IS SUCCESS"
-# fi 
+if [ $? -ne 0 ];
+then
+    echo "GIT CLONING IS FAILURE"
+else
+    echo "GIT CLONING IS SUCCESS"
+fi 
 
- cd /home/centos/terraform-jenkins-01
+ cd /tmp/TERRAFORM-JENKINS-1
 
 ansible-playbook jenkins.yaml 
